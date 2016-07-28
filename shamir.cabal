@@ -1,0 +1,78 @@
+-- This file has been generated from package.yaml by hpack version 0.14.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           shamir
+version:        0.1.0
+homepage:       https://github.com/mitchellwrosen/shamir#readme
+bug-reports:    https://github.com/mitchellwrosen/shamir/issues
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+source-repository head
+  type: git
+  location: https://github.com/mitchellwrosen/shamir
+
+library
+  hs-source-dirs:
+      src
+  default-extensions: BangPatterns DataKinds GADTs KindSignatures LambdaCase MagicHash OverloadedStrings ScopedTypeVariables TypeOperators ViewPatterns
+  ghc-options: -Wall
+  build-depends:
+      base
+    , bytestring
+    , ghc-prim
+    , mwc-random
+    , vector
+  exposed-modules:
+      Shamir.Secret
+      Shamir.Secret.V
+  other-modules:
+      Shamir.Secret.Decode
+      Shamir.Secret.Encode
+      Shamir.Secret.N
+      Shamir.Secret.Share
+      Shamir.Secret.Utils
+      Shamir.Secret.V.Internal
+      Paths_shamir
+  default-language: Haskell2010
+
+test-suite doctest
+  type: exitcode-stdio-1.0
+  main-is: DocTest.hs
+  hs-source-dirs:
+      test
+  default-extensions: BangPatterns DataKinds GADTs KindSignatures LambdaCase MagicHash OverloadedStrings ScopedTypeVariables TypeOperators ViewPatterns
+  ghc-options: -Wall
+  build-depends:
+      base
+    , bytestring
+    , ghc-prim
+    , mwc-random
+    , vector
+    , doctest
+  other-modules:
+      Shamir.SecretSpec
+      Spec
+  default-language: Haskell2010
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  default-extensions: BangPatterns DataKinds GADTs KindSignatures LambdaCase MagicHash OverloadedStrings ScopedTypeVariables TypeOperators ViewPatterns
+  ghc-options: -Wall
+  build-depends:
+      base
+    , bytestring
+    , ghc-prim
+    , mwc-random
+    , vector
+    , hspec
+    , shamir
+  other-modules:
+      DocTest
+      Shamir.SecretSpec
+  default-language: Haskell2010

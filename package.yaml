@@ -1,0 +1,44 @@
+name: shamir
+version: 0.1.0
+github: mitchellwrosen/shamir
+
+ghc-options: -Wall
+
+default-extensions:
+  - BangPatterns
+  - DataKinds
+  - GADTs
+  - KindSignatures
+  - LambdaCase
+  - MagicHash
+  - OverloadedStrings
+  - ScopedTypeVariables
+  - TypeOperators
+  - ViewPatterns
+
+dependencies:
+  - base
+  - bytestring
+  - ghc-prim
+  - mwc-random
+  - vector
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Shamir.Secret
+    - Shamir.Secret.V
+
+tests:
+  doctest:
+    source-dirs: test
+    main: DocTest.hs
+    dependencies:
+      - doctest
+
+  spec:
+    source-dirs: test
+    main: Spec.hs
+    dependencies:
+      - hspec
+      - shamir
