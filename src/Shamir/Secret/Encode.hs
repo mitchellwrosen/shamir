@@ -43,7 +43,7 @@ encodeWith gen bytes = do
   coeffs <-
     Vector.replicateM
       (ByteString.length bytes)
-      (map (fromIntegral :: Word8 -> N) <$> replicateM (k-1) (uniform gen))
+      (map w2n <$> replicateM (k-1) (uniform gen))
 
   pure (fromList (encodeWith' n coeffs bytes))
  where
@@ -52,6 +52,9 @@ encodeWith gen bytes = do
 
   k :: Int
   k = fromIntegral (natVal' (proxy# :: Proxy# k))
+
+  w2n :: Word64 -> N
+  w2n = fromIntegral
 
 -- | @encodeWith' n cs bytes@ makes @n@ shares of @bytes@, given coefficients
 -- to use for each index.
