@@ -1,3 +1,8 @@
 resolver: lts-6.9
+
 extra-deps:
+  # For benching against secret-sharing
+  - secret-sharing-1.0.0.3
+  - dice-entropy-conduit-1.0.0.1
   - finite-field-0.8.0
+  - polynomial-0.7.2

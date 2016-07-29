@@ -1,6 +1,7 @@
 module Shamir.Secret.V.Internal where
 
-import GHC.Prim     (unsafeCoerce#)
+import Control.DeepSeq
+import GHC.Prim        (unsafeCoerce#)
 import GHC.TypeLits
 
 data V :: Nat -> * -> * where
@@ -10,6 +11,10 @@ infixr 5 :::
 
 instance Show a => Show (V n a) where
   show = show . toList
+
+instance NFData a => NFData (V n a) where
+  rnf Nil = ()
+  rnf (x ::: xs) = x `deepseq` rnf xs
 
 toList :: V n a -> [a]
 toList Nil = []

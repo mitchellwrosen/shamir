@@ -15,8 +15,8 @@ import GHC.TypeLits
 import qualified Data.ByteString as ByteString
 import qualified Data.Vector     as Vector
 
--- | Encode a 'ByteString' into @n@ shares (two or more), any @k@ of
--- which are sufficient to decode it.
+-- | Encode a 'ByteString' into @n@ shares (two or more), any @k@
+-- of which are sufficient to decode it.
 --
 -- @
 -- encode bytes = do

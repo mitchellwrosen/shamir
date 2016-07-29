@@ -7,6 +7,8 @@ ghc-options: -Wall
 default-extensions:
   - BangPatterns
   - DataKinds
+  - DeriveAnyClass
+  - DeriveGeneric
   - GADTs
   - KindSignatures
   - LambdaCase
@@ -19,6 +21,7 @@ default-extensions:
 dependencies:
   - base
   - bytestring
+  - deepseq
   - ghc-prim
   - mwc-random
   - vector
@@ -42,3 +45,14 @@ tests:
     dependencies:
       - hspec
       - shamir
+
+benchmarks:
+  bench:
+    source-dirs: benchmarks
+    main: bench.hs
+    ghc-options: -O2
+    dependencies:
+      - shamir
+      - deepseq
+      - secret-sharing
+      - time

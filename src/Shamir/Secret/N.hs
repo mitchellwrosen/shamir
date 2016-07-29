@@ -3,13 +3,15 @@ module Shamir.Secret.N
   , Shamir.Secret.N.toInteger
   ) where
 
+import Control.DeepSeq
 import Data.Ratio
+import GHC.Generics
 
 prime :: Integer
 prime = 2683
 
 newtype N = N { toInteger :: Integer }
-  deriving (Eq, Show)
+  deriving (Eq, Show, Generic, NFData)
 
 instance Num N where
   N x + N y = N ((x + y) `mod` prime)

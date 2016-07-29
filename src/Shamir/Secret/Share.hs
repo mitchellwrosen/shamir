@@ -3,9 +3,11 @@ module Shamir.Secret.Share where
 import Shamir.Secret.N
 import Shamir.Secret.Utils
 
-import GHC.TypeLits
+import Control.DeepSeq
 import Data.ByteString (ByteString)
 import Data.Vector     (Vector, (!))
+import GHC.Generics    (Generic)
+import GHC.TypeLits
 
 import qualified Data.ByteString        as ByteString
 import qualified Data.ByteString.Unsafe as ByteString
@@ -15,7 +17,7 @@ import qualified Data.Vector            as Vector
 data Share (k :: Nat) = Share
   { shareIndex :: N
   , shareBytes :: Vector N
-  } deriving Eq
+  } deriving (Eq, Generic, NFData)
 
 shareByte :: Int -> Share k -> N
 shareByte i share = shareBytes share ! i
